@@ -8,13 +8,21 @@ import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-export function Cards({ name, power, weakness, img, description, deleteButton }) {
+export function Cards({
+  name,
+  power,
+  weakness,
+  img,
+  description,
+  editbutton,
+  deleteButton,
+}) {
   const [style, setStyle] = useState(" ");
   const changecolor = { color: style };
   return (
     <div>
       <Card className="card">
-        <CardMedia component="img" image={img} alt="green iguana" />
+        <CardMedia component="img" image={img} alt={name} />
         <CardContent>
           <div className="basics">
             <Typography variant="h6" gutterBottom component="div">
@@ -33,6 +41,7 @@ export function Cards({ name, power, weakness, img, description, deleteButton })
             <Chip color="success" label={power} />
             <Chip color="warning" label={weakness} />
             {deleteButton}
+            {editbutton}
           </div>
 
           <Typography variant="body2" color="text.secondary">

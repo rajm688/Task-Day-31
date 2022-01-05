@@ -1,20 +1,38 @@
-import { useState } from "react";
 import * as React from "react";
-import { TextField, Button } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
 
-export function Addpoke() {
-  const [name, setName] = useState("");
-  const [power, setPower] = useState("");
-  const [weakness, setWeakness] = useState("");
-  const [img, setImg] = useState("");
-  const [description, setDescription] = useState("");
+export function Editpoke() {
+  // const { id } = useParams();
+  const id = 1;
+  const [datas, setData] = useState(null);
+  const getPoke = () =>
+    fetch(`https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon/:id`, {
+      method: "GET",
+    })
+      .then((data) => data.json())
+      .then((poke) => setData(poke));
+  useEffect(getPoke, []);
+  console.log({ id });
+  console.log(datas);
+  return datas ? <Updatepoke datas={datas} /> : " ";
+}
+function Updatepoke({ datas }) {
+  const [name, setName] = useState(datas.name);
+  const [power, setPower] = useState(datas.power);
+  const [weakness, setWeakness] = useState(datas.weakness);
+  const [img, setImg] = useState(datas.img);
+  const [description, setDescription] = useState(datas.description);
   const history = useHistory();
   return (
     <div>
       <div className="main">
         <div className="inputfield">
           <TextField
+            value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -23,6 +41,7 @@ export function Addpoke() {
             variant="standard"
           />
           <TextField
+            value={power}
             onChange={(e) => {
               setPower(e.target.value);
             }}
@@ -31,6 +50,7 @@ export function Addpoke() {
             variant="standard"
           />
           <TextField
+            value={weakness}
             onChange={(e) => {
               setWeakness(e.target.value);
             }}
@@ -39,6 +59,7 @@ export function Addpoke() {
             variant="standard"
           />
           <TextField
+            value={img}
             onChange={(e) => {
               setImg(e.target.value);
             }}
@@ -47,6 +68,7 @@ export function Addpoke() {
             variant="standard"
           />
           <TextField
+            value={description}
             onChange={(e) => {
               setDescription(e.target.value);
             }}
@@ -63,17 +85,20 @@ export function Addpoke() {
                 img,
                 description,
               };
-              fetch("https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon", {
-                method: "POST",
-                body: JSON.stringify(newpoke),
-                headers: { "Content-Type": "application/json" },
-              })
+              fetch(
+                `https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon/${datas.id}`,
+                {
+                  method: "PUT",
+                  body: JSON.stringify(newpoke),
+                  headers: { "Content-Type": "application/json" },
+                }
+              )
                 .then((data) => data.json())
                 .then(() => history.push("/"));
             }}
             variant="contained"
           >
-            Add Pokemon
+            Save Changes
           </Button>
         </div>
       </div>
