@@ -4,7 +4,6 @@ import * as React from "react";
 import { Typography } from "@mui/material";
 import { Addpoke } from "./Addpoke";
 import { PokeList } from "./PokeList";
-import { useParams } from "react-router-dom";
 import { Editpoke } from "./Editpoke";
 export default function App() {
   return (

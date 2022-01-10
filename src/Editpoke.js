@@ -1,22 +1,20 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useHistory } from "react-router-dom";
+import { useHistory,useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export function Editpoke() {
-  // const { id } = useParams();
-  const id = 1;
+  const { id } = useParams();
   const [datas, setData] = useState(null);
   const getPoke = () =>
-    fetch(`https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon/:id`, {
+    fetch(`https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon/${id}`, {
       method: "GET",
     })
       .then((data) => data.json())
       .then((poke) => setData(poke));
   useEffect(getPoke, []);
-  console.log({ id });
   console.log(datas);
   return datas ? <Updatepoke datas={datas} /> : " ";
 }
