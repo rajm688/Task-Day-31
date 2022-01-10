@@ -5,12 +5,14 @@ import { Typography } from "@mui/material";
 import { Addpoke } from "./Addpoke";
 import { PokeList } from "./PokeList";
 import { Editpoke } from "./Editpoke";
+import Button from "@mui/material/Button";
+
 export default function App() {
   return (
     <div>
       <div className="navbar">
-        <Link to="/">Home</Link>
-        <Link to="/AddPokemon">Add Pokemon</Link>
+        <Button><Link id="navbarcontent" to="/">Home</Link></Button>
+        <Button><Link id="navbarcontent" to="/AddPokemon">Add Pokemon</Link></Button>
       </div>
       <Typography className="heading" gutterBottom variant="h5" component="div">
         Welcome to the Rarest{" "}

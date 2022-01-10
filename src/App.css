@@ -50,3 +50,7 @@ body {
   background-color: rgb(77, 154, 255);
   justify-content: flex-end;
 }
+#navbarcontent{
+  text-decoration: none;
+  color: azure;
+}
