@@ -8,10 +8,11 @@ export function Addpoke() {
   const [power, setPower] = useState("");
   const [weakness, setWeakness] = useState("");
   const [img, setImg] = useState("");
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState("");//setting hooks for getting user inputs
   const history = useHistory();
   return (
     <div>
+      {/* input section starts here */}
       <div className="main">
         <div className="inputfield">
           <TextField
@@ -63,6 +64,7 @@ export function Addpoke() {
                 img,
                 description,
               };
+              // using fetch with POST method to post the data collected from the user
               fetch("https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon", {
                 method: "POST",
                 body: JSON.stringify(newpoke),

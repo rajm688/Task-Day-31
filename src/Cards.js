@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
+// getting all the props and destructuring
 export function Cards({
   name,
   power,
@@ -21,6 +21,7 @@ export function Cards({
   const changecolor = { color: style };
   return (
     <div>
+      {/* react MUI card  */}
       <Card className="card">
         <CardMedia component="img" image={img} alt={name} />
         <CardContent>

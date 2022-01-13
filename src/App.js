@@ -11,7 +11,8 @@ export default function App() {
   return (
     <div>
       <div className="navbar">
-        <Button><Link id="navbarcontent" to="/">Home</Link></Button>
+        {/* nav bar section */}
+        <Button><Link id="navbarcontent" to="/">Home</Link></Button> 
         <Button><Link id="navbarcontent" to="/AddPokemon">Add Pokemon</Link></Button>
       </div>
       <Typography className="heading" gutterBottom variant="h5" component="div">
@@ -29,6 +30,8 @@ export default function App() {
         />{" "}
         and alter the collection as you see fit.
       </Typography>
+
+      {/* switch for routing */}
       <Switch>
         <Route exact path="/">
           <PokeList />

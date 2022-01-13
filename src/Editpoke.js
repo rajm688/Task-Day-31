@@ -4,11 +4,11 @@ import Button from "@mui/material/Button";
 import { useHistory,useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
-
+// this session we are doing edit part in CRUD operation
 export function Editpoke() {
   const { id } = useParams();
   const [datas, setData] = useState(null);
-  
+  // using useEffect to call the funtion only once
   useEffect(()=>{
     const getPoke = () =>
     fetch(`https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon/${id}`, {
@@ -18,7 +18,7 @@ export function Editpoke() {
       .then((poke) => setData(poke));
       getPoke()
       console.log( datas, id)
-  }, []); // when i put () here im not grtting anything in this route sir 
+  }, []); // getting data of the particular pokemon to fill the edit form for easy editing 
   return datas ? <Updatepoke datas={datas} /> : " ";
 }
 function Updatepoke({ datas }) {
@@ -86,6 +86,7 @@ function Updatepoke({ datas }) {
                 img,
                 description,
               };
+              // using put method for updating data
               fetch(
                 `https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon/${datas.id}`,
                 {

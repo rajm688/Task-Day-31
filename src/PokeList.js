@@ -6,6 +6,7 @@ import { Cards } from "./Cards";
 import EditIcon from "@mui/icons-material/Edit";
 import { useHistory } from "react-router-dom";
 export function PokeList() {
+  //  in this part we are adding delete button and creating card view
   const getPoke = () =>
     fetch("https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon", {
       method: "GET",
