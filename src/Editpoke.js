@@ -9,16 +9,13 @@ export function Editpoke() {
   const { id } = useParams();
   const [datas, setData] = useState(null);
   // using useEffect to call the funtion only once
-  useEffect(()=>{
-    const getPoke = () =>
-    fetch(`https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon/${id}`, {
-      method: "GET",
-    })
-      .then((data) => data.json())
-      .then((poke) => setData(poke));
-      getPoke()
-      console.log( datas, id)
-  }, []); // getting data of the particular pokemon to fill the edit form for easy editing 
+  const getPoke = () =>
+  fetch(`https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon/${id}`, {
+    method: "GET",
+  })
+    .then((data) => data.json())
+    .then((poke) => setData(poke));
+  useEffect(getPoke, [datas, id]); // getting data of the particular pokemon to fill the edit form for easy editing 
   return datas ? <Updatepoke datas={datas} /> : " ";
 }
 function Updatepoke({ datas }) {
