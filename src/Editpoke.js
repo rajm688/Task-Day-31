@@ -19,7 +19,6 @@ export function Editpoke() {
       getPoke()
       console.log( datas, id)
   }, []); // when i put () here im not grtting anything in this route sir 
-  console.log(datas);
   return datas ? <Updatepoke datas={datas} /> : " ";
 }
 function Updatepoke({ datas }) {
