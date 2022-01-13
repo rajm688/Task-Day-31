@@ -36,7 +36,7 @@ export default function App() {
         <Route path="/AddPokemon">
           <Addpoke />
         </Route>
-        <Route path="/EditPoke">
+        <Route path="/EditPoke/:id">
           <Editpoke />
         </Route>
       </Switch>

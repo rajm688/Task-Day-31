@@ -8,13 +8,17 @@ import { useEffect } from "react";
 export function Editpoke() {
   const { id } = useParams();
   const [datas, setData] = useState(null);
-  const getPoke = () =>
+  
+  useEffect(()=>{
+    const getPoke = () =>
     fetch(`https://61c412fdf1af4a0017d99285.mockapi.io/Pokemon/${id}`, {
       method: "GET",
     })
       .then((data) => data.json())
       .then((poke) => setData(poke));
-  useEffect(getPoke, []);
+      getPoke()
+      console.log( datas, id)
+  }, []); // when i put () here im not grtting anything in this route sir 
   console.log(datas);
   return datas ? <Updatepoke datas={datas} /> : " ";
 }

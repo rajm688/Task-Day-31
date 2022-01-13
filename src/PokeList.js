@@ -42,7 +42,7 @@ export function PokeList() {
               </IconButton>
             }
             editbutton={
-              <IconButton onClick={() => history.push("/EditPoke")}>
+              <IconButton onClick={() => history.push(`/EditPoke/${id}`)}>
                 <EditIcon />
               </IconButton>
             }
